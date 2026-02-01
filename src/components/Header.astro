@@ -1,0 +1,67 @@
+---
+import { siteConfig } from '../../site.config';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2">
+        <span class="text-2xl">✝️</span>
+        <span class="font-bold text-xl text-primary">{siteConfig.name}</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-6">
+        {siteConfig.navigation.map((item) => (
+          <a
+            href={item.href}
+            class={`text-gray-600 hover:text-primary transition-colors ${
+              pathname === item.href ? 'text-primary font-medium' : ''
+            }`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+      
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 text-gray-600 hover:text-primary"
+        aria-label="開啟選單"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col space-y-3">
+        {siteConfig.navigation.map((item) => (
+          <a
+            href={item.href}
+            class={`text-gray-600 hover:text-primary transition-colors py-2 ${
+              pathname === item.href ? 'text-primary font-medium' : ''
+            }`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

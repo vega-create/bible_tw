@@ -1,0 +1,86 @@
+---
+// 分類頁面 - 顯示該分類下的所有文章
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../../../site.config';
+
+export async function getStaticPaths() {
+  return siteConfig.categories.map(category => ({
+    params: { category: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+
+const allPosts = await getCollection('posts');
+const categoryPosts = allPosts
+  .filter(post => post.data.category === category.slug && !post.data.draft)
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<BaseLayout 
+  title={category.name}
+  description={category.description}
+>
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <!-- 分類標題 -->
+    <header class="mb-12 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        {category.name}
+      </h1>
+      <p class="text-gray-600 text-lg">
+        {category.description}
+      </p>
+      <div class="mt-4 text-sm text-gray-400">
+        共 {categoryPosts.length} 篇文章
+      </div>
+    </header>
+    
+    <!-- 文章列表 -->
+    {categoryPosts.length > 0 ? (
+      <div class="space-y-8">
+        {categoryPosts.map(post => (
+          <article class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="md:flex">
+              {post.data.image && (
+                <div class="md:w-1/3">
+                  <img 
+                    src={post.data.image} 
+                    alt={post.data.imageAlt || post.data.title}
+                    class="w-full h-48 md:h-full object-cover"
+                  />
+                </div>
+              )}
+              <div class="p-6 md:flex-1">
+                <h2 class="text-xl font-bold text-gray-800 mb-3">
+                  <a href={`/posts/${post.slug}`} class="hover:text-primary">
+                    {post.data.title}
+                  </a>
+                </h2>
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  {post.data.description}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-400">
+                    {new Date(post.data.publishDate).toLocaleDateString('zh-TW')}
+                  </span>
+                  <a 
+                    href={`/posts/${post.slug}`}
+                    class="text-primary font-medium text-sm hover:underline"
+                  >
+                    閱讀更多 →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12 text-gray-500">
+        此分類目前還沒有文章
+      </div>
+    )}
+  </div>
+</BaseLayout>

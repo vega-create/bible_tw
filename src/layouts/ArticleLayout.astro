@@ -1,0 +1,151 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import FAQSchema from '../components/FAQSchema.astro';
+import AdSense from '../components/AdSense.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import { siteConfig } from '../../site.config';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  image?: string;
+  imageAlt?: string;
+  category: string;
+  tags?: string[];
+  author?: string;
+  headings: { depth: number; slug: string; text: string }[];
+  faqs?: FAQ[];
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  updatedDate,
+  image,
+  imageAlt,
+  category,
+  tags = [],
+  author = siteConfig.author,
+  headings,
+  faqs = [],
+} = Astro.props;
+
+const categoryInfo = siteConfig.categories.find(c => c.slug === category);
+const formattedDate = publishDate.toLocaleDateString(siteConfig.language, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  article={{
+    publishedTime: publishDate.toISOString(),
+    modifiedTime: updatedDate?.toISOString(),
+    author,
+    tags,
+  }}
+>
+  <article class="max-w-4xl mx-auto px-4 py-8">
+    <!-- 文章標頭 -->
+    <header class="mb-8">
+      <!-- 分類標籤 -->
+      {categoryInfo && (
+        <a
+          href={`/category/${category}`}
+          class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4 hover:bg-primary/20 transition-colors"
+        >
+          {categoryInfo.icon} {categoryInfo.name}
+        </a>
+      )}
+      
+      <!-- 標題 -->
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        {title}
+      </h1>
+      
+      <!-- Meta 資訊 -->
+      <div class="flex flex-wrap items-center gap-4 text-gray-500 text-sm">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          {formattedDate}
+        </span>
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          {author}
+        </span>
+      </div>
+      
+      <!-- 標籤 -->
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {tags.map((tag) => (
+            <a
+              href={`/tag/${tag}`}
+              class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition-colors"
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
+    
+    <!-- 封面圖 -->
+    {image && (
+      <figure class="mb-8">
+        <img
+          src={image}
+          alt={imageAlt || title}
+          class="w-full rounded-xl shadow-lg"
+          loading="lazy"
+        />
+      </figure>
+    )}
+    
+    <!-- 目錄 -->
+    <TableOfContents headings={headings} />
+    
+    <!-- 目錄下方廣告 -->
+    <AdSense slot="inArticle" />
+    
+    <!-- 文章內容 -->
+    <div class="prose prose-lg max-w-none">
+      <slot />
+    </div>
+    
+    <!-- FAQ 區塊 -->
+    {faqs.length > 0 && (
+      <>
+        <AdSense slot="beforeFaq" />
+        <FAQSchema faqs={faqs} />
+      </>
+    )}
+    
+    <!-- 分享按鈕 -->
+    <ShareButtons title={title} />
+    
+    <!-- 底部廣告 -->
+    <AdSense slot="footer" />
+    
+    <!-- 相關文章 -->
+    <RelatedPosts category={category} currentSlug={Astro.url.pathname} />
+  </article>
+</BaseLayout>

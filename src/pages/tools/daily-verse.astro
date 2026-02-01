@@ -1,0 +1,171 @@
+---
+// 今日經文工具 - 串接聖經 JSON
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import bibleData from '../../data/zh_cuv.json';
+
+// 書卷中文名稱對照
+const bookNames: Record<string, string> = {
+  gn: "創世記", ex: "出埃及記", lv: "利未記", nm: "民數記", dt: "申命記",
+  js: "約書亞記", jd: "士師記", rt: "路得記", "1sm": "撒母耳記上", "2sm": "撒母耳記下",
+  "1kgs": "列王紀上", "2kgs": "列王紀下", "1ch": "歷代志上", "2ch": "歷代志下",
+  ezr: "以斯拉記", ne: "尼希米記", et: "以斯帖記", job: "約伯記", ps: "詩篇",
+  prv: "箴言", ec: "傳道書", so: "雅歌", is: "以賽亞書", jr: "耶利米書",
+  lm: "耶利米哀歌", ez: "以西結書", dn: "但以理書", hs: "何西阿書", jl: "約珥書",
+  am: "阿摩司書", ob: "俄巴底亞書", jn: "約拿書", mc: "彌迦書", na: "那鴻書",
+  hk: "哈巴谷書", zp: "西番雅書", hg: "哈該書", zc: "撒迦利亞書", ml: "瑪拉基書",
+  mt: "馬太福音", mk: "馬可福音", lk: "路加福音", jo: "約翰福音", act: "使徒行傳",
+  rm: "羅馬書", "1co": "哥林多前書", "2co": "哥林多後書", gl: "加拉太書", eph: "以弗所書",
+  ph: "腓立比書", cl: "歌羅西書", "1ts": "帖撒羅尼迦前書", "2ts": "帖撒羅尼迦後書",
+  "1tm": "提摩太前書", "2tm": "提摩太後書", tt: "提多書", phm: "腓利門書",
+  hb: "希伯來書", jm: "雅各書", "1pe": "彼得前書", "2pe": "彼得後書",
+  "1jo": "約翰一書", "2jo": "約翰二書", "3jo": "約翰三書", jd2: "猶大書", re: "啟示錄",
+};
+
+// 精選經文索引（適合當每日經文的）
+const featuredVerses = [
+  { book: "ps", chapter: 23, verse: 1 },
+  { book: "ps", chapter: 23, verse: 4 },
+  { book: "ps", chapter: 46, verse: 1 },
+  { book: "ps", chapter: 91, verse: 1 },
+  { book: "ps", chapter: 119, verse: 105 },
+  { book: "ps", chapter: 121, verse: 1 },
+  { book: "prv", chapter: 3, verse: 5 },
+  { book: "prv", chapter: 3, verse: 6 },
+  { book: "is", chapter: 40, verse: 31 },
+  { book: "is", chapter: 41, verse: 10 },
+  { book: "jr", chapter: 29, verse: 11 },
+  { book: "jr", chapter: 31, verse: 3 },
+  { book: "mt", chapter: 6, verse: 33 },
+  { book: "mt", chapter: 7, verse: 7 },
+  { book: "mt", chapter: 11, verse: 28 },
+  { book: "jo", chapter: 3, verse: 16 },
+  { book: "jo", chapter: 14, verse: 6 },
+  { book: "jo", chapter: 14, verse: 27 },
+  { book: "rm", chapter: 8, verse: 28 },
+  { book: "rm", chapter: 8, verse: 38 },
+  { book: "ph", chapter: 4, verse: 6 },
+  { book: "ph", chapter: 4, verse: 13 },
+  { book: "hb", chapter: 11, verse: 1 },
+  { book: "hb", chapter: 13, verse: 8 },
+  { book: "jm", chapter: 1, verse: 5 },
+  { book: "1pe", chapter: 5, verse: 7 },
+  { book: "1jo", chapter: 4, verse: 8 },
+];
+
+// 準備經文資料傳給前端
+const versesForClient = featuredVerses.map(v => {
+  const bookData = bibleData.find((b: any) => b.abbrev === v.book);
+  if (!bookData) return null;
+  
+  const verseText = bookData.chapters[v.chapter - 1]?.[v.verse - 1];
+  if (!verseText) return null;
+  
+  const bookName = bookNames[v.book] || bookData.book;
+  return {
+    text: verseText,
+    ref: `${bookName} ${v.chapter}:${v.verse}`,
+  };
+}).filter(Boolean);
+---
+
+<BaseLayout 
+  title="今日經文"
+  description="每天一節經文，聆聽神對你說的話"
+>
+  <div class="max-w-2xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-bold text-gray-800 mb-4">✨ 今日經文</h1>
+      <p class="text-gray-600">點擊下方按鈕，看看今天神要對你說什麼</p>
+    </div>
+    
+    <!-- 經文顯示區 -->
+    <div id="verse-container" class="bg-white rounded-2xl shadow-lg p-8 mb-8 min-h-[200px] flex items-center justify-center">
+      <div id="verse-content" class="text-center">
+        <p class="text-gray-400">點擊按鈕獲取今日經文</p>
+      </div>
+    </div>
+    
+    <!-- 按鈕區 -->
+    <div class="flex flex-col items-center space-y-4">
+      <button 
+        id="get-verse-btn"
+        class="px-8 py-4 bg-primary text-white text-lg font-semibold rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl"
+      >
+        🎯 今天神要對我說什麼？
+      </button>
+      
+      <div id="share-buttons" class="hidden flex space-x-4 mt-4">
+        <button id="copy-btn" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+          📋 複製經文
+        </button>
+        <button id="share-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          🔗 分享
+        </button>
+      </div>
+    </div>
+    
+    <!-- 再抽一次 -->
+    <div class="text-center mt-8">
+      <button 
+        id="another-btn"
+        class="hidden text-primary hover:underline"
+      >
+        🔄 再抽一節
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ versesForClient }}>
+  const verses = versesForClient;
+  let currentVerse = null;
+  
+  function getRandomVerse() {
+    const randomIndex = Math.floor(Math.random() * verses.length);
+    return verses[randomIndex];
+  }
+  
+  function displayVerse(verse) {
+    const container = document.getElementById('verse-content');
+    container.innerHTML = `
+      <blockquote class="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed font-serif">
+        「${verse.text}」
+      </blockquote>
+      <p class="text-primary font-medium">— ${verse.ref}</p>
+    `;
+    document.getElementById('share-buttons').classList.remove('hidden');
+    document.getElementById('another-btn').classList.remove('hidden');
+    currentVerse = verse;
+  }
+  
+  document.getElementById('get-verse-btn').addEventListener('click', () => {
+    const verse = getRandomVerse();
+    displayVerse(verse);
+  });
+  
+  document.getElementById('another-btn').addEventListener('click', () => {
+    const verse = getRandomVerse();
+    displayVerse(verse);
+  });
+  
+  document.getElementById('copy-btn').addEventListener('click', () => {
+    if (currentVerse) {
+      const text = `「${currentVerse.text}」— ${currentVerse.ref}`;
+      navigator.clipboard.writeText(text);
+      alert('經文已複製！');
+    }
+  });
+  
+  document.getElementById('share-btn').addEventListener('click', () => {
+    if (currentVerse && navigator.share) {
+      navigator.share({
+        title: '今日經文',
+        text: `「${currentVerse.text}」— ${currentVerse.ref}`,
+        url: window.location.href,
+      });
+    } else if (currentVerse) {
+      const text = encodeURIComponent(`「${currentVerse.text}」— ${currentVerse.ref}`);
+      window.open(`https://www.facebook.com/sharer/sharer.php?quote=${text}`, '_blank');
+    }
+  });
+</script>

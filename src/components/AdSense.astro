@@ -1,0 +1,36 @@
+---
+// AdSense.astro - Google AdSense 廣告元件
+import { siteConfig } from '../../site.config';
+
+interface Props {
+  slot: 'header' | 'inArticle1' | 'inArticle2' | 'multiplex';
+  format?: 'auto' | 'fluid' | 'rectangle';
+}
+
+const { slot, format = 'auto' } = Astro.props;
+const { enabled, clientId, slots } = siteConfig.adsense;
+const slotId = slots[slot];
+---
+
+{enabled && slotId && (
+  <div class="ad-container my-6">
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client={clientId}
+      data-ad-slot={slotId}
+      data-ad-format={format}
+      data-full-width-responsive="true"
+    />
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+)}
+
+<style>
+  .ad-container {
+    min-height: 100px;
+    text-align: center;
+  }
+</style>

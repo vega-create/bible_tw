@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  category: string;
+  currentSlug: string;
+  limit?: number;
+}
+
+const { category, currentSlug, limit = 3 } = Astro.props;
+
+// 取得同分類的文章
+const allPosts = await getCollection('posts');
+const relatedPosts = allPosts
+  .filter(post => post.data.category === category && `/posts/${post.slug}` !== currentSlug)
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, limit);
+---
+
+{relatedPosts.length > 0 && (
+  <section class="my-10">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">📚 相關文章</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      {relatedPosts.map((post) => (
+        <a
+          href={`/posts/${post.slug}`}
+          class="card p-4 hover:scale-[1.02] transition-transform"
+        >
+          {post.data.image && (
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="w-full h-40 object-cover rounded-lg mb-3"
+              loading="lazy"
+            />
+          )}
+          <h3 class="font-bold text-gray-800 mb-2 line-clamp-2">
+            {post.data.title}
+          </h3>
+          <p class="text-gray-500 text-sm line-clamp-2">
+            {post.data.description}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

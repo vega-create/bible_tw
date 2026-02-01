@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../../site.config';
+
+// 取得最新文章
+const allPosts = await getCollection('posts');
+const latestPosts = allPosts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 6);
+
+// 取得精選文章
+const featuredPosts = allPosts
+  .filter(post => post.data.featured && !post.data.draft)
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        {siteConfig.name}
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        {siteConfig.description}
+      </p>
+      
+      <!-- 今日經文按鈕 -->
+      <a
+        href="/tools/daily-verse"
+        class="inline-flex items-center gap-2 btn btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all"
+      >
+        ✨ 今天神要對我說什麼？
+      </a>
+    </div>
+  </section>
+  
+  <!-- 分類導航 -->
+  <section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {siteConfig.categories.map((cat) => (
+          <a
+            href={`/category/${cat.slug}`}
+            class="card p-6 text-center hover:scale-105 transition-transform"
+          >
+            <span class="text-4xl mb-2 block">{cat.icon}</span>
+            <h3 class="font-bold text-gray-800">{cat.name}</h3>
+            <p class="text-sm text-gray-500 mt-1">{cat.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- 最新文章 -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-800">📝 最新文章</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {latestPosts.map((post) => {
+          const categoryInfo = siteConfig.categories.find(c => c.slug === post.data.category);
+          return (
+            <a href={`/posts/${post.slug}`} class="card overflow-hidden hover:scale-[1.02] transition-transform">
+              {post.data.image && (
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="w-full h-40 object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div class="p-5">
+                {categoryInfo && (
+                  <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                    {categoryInfo.icon} {categoryInfo.name}
+                  </span>
+                )}
+                <h3 class="font-bold text-gray-800 mt-2 mb-2 line-clamp-2">
+                  {post.data.title}
+                </h3>
+                <p class="text-gray-500 text-sm line-clamp-2">
+                  {post.data.description}
+                </p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+  
+  <!-- 工具區塊 -->
+  <section class="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">🛠️ 實用工具</h2>
+      <p class="text-gray-600 mb-8">幫助你更親近神的小工具</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/tools/daily-verse" class="card p-6 hover:scale-105 transition-transform">
+          <span class="text-4xl mb-3 block">🎯</span>
+          <h3 class="font-bold text-gray-800">今日經文</h3>
+          <p class="text-sm text-gray-500 mt-2">每日一節經文與啟示</p>
+        </a>
+        <a href="/tools/prayer-generator" class="card p-6 hover:scale-105 transition-transform">
+          <span class="text-4xl mb-3 block">🙏</span>
+          <h3 class="font-bold text-gray-800">禱告產生器</h3>
+          <p class="text-sm text-gray-500 mt-2">根據主題產生禱告詞</p>
+        </a>
+        <a href="/tools/bible-quiz" class="card p-6 hover:scale-105 transition-transform">
+          <span class="text-4xl mb-3 block">❓</span>
+          <h3 class="font-bold text-gray-800">聖經問答</h3>
+          <p class="text-sm text-gray-500 mt-2">測試你的聖經知識</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
