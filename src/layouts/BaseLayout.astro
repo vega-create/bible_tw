@@ -28,6 +28,8 @@ const props = Astro.props;
   <head>
     <SEO {...props} />
     <Analytics />
+
+    <meta name="google-site-verification" content="nkfMZuYPQe9QuHsQkBVmHPaNlhtqexTL8mUqgQtOq8k" />
     
     {siteConfig.adsense.enabled && siteConfig.adsense.autoAds && (
       <script
@@ -36,6 +38,8 @@ const props = Astro.props;
         crossorigin="anonymous"
       />
     )}
+
+
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
