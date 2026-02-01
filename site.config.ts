@@ -20,7 +20,8 @@ export const siteConfig = {
 
   // Google AdSense
   adsense: {
-    enabled: false,
+    enabled: true,
+    autoAds: true,
     clientId: "ca-pub-3493526929407874",
     slots: {
       header: "1234567890",
