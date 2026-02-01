@@ -21,7 +21,7 @@ export const siteConfig = {
   // Google AdSense
   adsense: {
     enabled: false,
-    clientId: "ca-pub-XXXXXXXXXXXXXXXX",
+    clientId: "ca-pub-3493526929407874",
     slots: {
       header: "1234567890",
       inArticle1: "2345678901",
