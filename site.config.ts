@@ -33,8 +33,8 @@ export const siteConfig = {
 
   // Google Analytics
   analytics: {
-    enabled: false,
-    measurementId: "G-XXXXXXXXXX",
+    enabled: true,
+    measurementId: "G-F1XNLPLJGT",
   },
 
   // 文章分類（只保留三個）
