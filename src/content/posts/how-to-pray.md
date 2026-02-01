@@ -2,9 +2,9 @@
 title: "如何禱告？初學者完整指南"
 description: "不知道如何開始禱告？這篇文章將教你禱告的基本方法、禱告時可以說什麼，以及如何建立每日禱告的習慣。"
 publishDate: "2025-01-31"
-category: "prayer"
+category: "faq"
 tags: ["禱告", "初學者", "信仰基礎", "靈修"]
-image: "/images/posts/how-to-pray.jpg"
+image: "https://images.pexels.com/photos/267559/pexels-photo-267559.jpeg?auto=compress&cs=tinysrgb&w=1260"
 imageAlt: "一個人在安靜的地方禱告"
 featured: true
 faq:

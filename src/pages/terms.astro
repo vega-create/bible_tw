@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../../site.config';
+---
+
+<BaseLayout title="使用條款">
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">使用條款</h1>
+    
+    <div class="prose prose-lg">
+      <p>最後更新日期：2025 年 2 月</p>
+      
+      <h2>服務說明</h2>
+      <p>
+        {siteConfig.name} 提供聖經靈修、經文導讀及信仰相關內容。
+        本網站內容僅供參考，不構成任何專業建議。
+      </p>
+      
+      <h2>智慧財產權</h2>
+      <p>
+        本網站的原創內容受著作權法保護。聖經經文引用自公開版本（和合本），
+        版權歸屬原出版單位。
+      </p>
+      
+      <h2>使用規範</h2>
+      <p>使用本網站時，您同意：</p>
+      <ul>
+        <li>不會將內容用於商業目的（未經授權）</li>
+        <li>不會惡意攻擊或干擾網站運作</li>
+        <li>分享內容時會註明出處</li>
+      </ul>
+      
+      <h2>免責聲明</h2>
+      <p>
+        本網站內容僅供靈修參考，不代表任何教派立場。
+        我們盡力確保內容準確，但不對任何錯誤或遺漏負責。
+      </p>
+      
+      <h2>條款修改</h2>
+      <p>
+        我們保留隨時修改使用條款的權利。繼續使用本網站即表示您同意最新條款。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

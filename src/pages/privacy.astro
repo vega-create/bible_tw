@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../../site.config';
+---
+
+<BaseLayout title="隱私權政策">
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">隱私權政策</h1>
+    
+    <div class="prose prose-lg">
+      <p>最後更新日期：2025 年 2 月</p>
+      
+      <h2>資料收集</h2>
+      <p>
+        {siteConfig.name} 重視您的隱私。我們可能透過 Google Analytics 收集匿名的瀏覽數據，
+        以改善網站體驗。這些資料不會包含任何可識別個人身份的資訊。
+      </p>
+      
+      <h2>Cookie 使用</h2>
+      <p>
+        本網站使用 Cookie 來提升您的瀏覽體驗，並透過 Google AdSense 顯示相關廣告。
+        您可以透過瀏覽器設定管理 Cookie 偏好。
+      </p>
+      
+      <h2>第三方服務</h2>
+      <p>我們使用以下第三方服務：</p>
+      <ul>
+        <li>Google Analytics - 網站流量分析</li>
+        <li>Google AdSense - 廣告投放</li>
+      </ul>
+      
+      <h2>資料安全</h2>
+      <p>
+        我們採取適當的安全措施來保護您的資料。本網站使用 HTTPS 加密連線。
+      </p>
+      
+      <h2>聯絡我們</h2>
+      <p>
+        如果您對隱私權政策有任何疑問，歡迎透過「聯絡我們」頁面與我們聯繫。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

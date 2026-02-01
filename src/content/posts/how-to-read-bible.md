@@ -4,7 +4,7 @@ description: "想開始讀聖經卻不知從何下手？這篇完整指南教你
 publishDate: 2025-01-31
 category: "bible-study"
 tags: ["讀經", "初學者", "聖經", "靈修"]
-image: "/images/posts/how-to-read-bible.jpg"
+image: "https://images.pexels.com/photos/372326/pexels-photo-372326.jpeg?auto=compress&cs=tinysrgb&w=1260"
 imageAlt: "一本打開的聖經放在木桌上"
 featured: true
 faqs:

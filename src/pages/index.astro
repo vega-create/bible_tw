@@ -1,92 +1,62 @@
 ---
+// 首頁
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
 import { siteConfig } from '../../site.config';
+import { getCollection } from 'astro:content';
 
 // 取得最新文章
 const allPosts = await getCollection('posts');
-const latestPosts = allPosts
+const recentPosts = allPosts
   .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
   .slice(0, 6);
-
-// 取得精選文章
-const featuredPosts = allPosts
-  .filter(post => post.data.featured && !post.data.draft)
-  .slice(0, 3);
 ---
 
 <BaseLayout>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+  <section class="bg-gradient-to-br from-amber-50 to-orange-100 py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
         {siteConfig.name}
       </h1>
-      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      <p class="text-lg md:text-xl text-gray-600 mb-8">
         {siteConfig.description}
       </p>
       
-      <!-- 今日經文按鈕 -->
-      <a
+      <!-- 今日經文按鈕 - 深色背景 -->
+      <a 
         href="/tools/daily-verse"
-        class="inline-flex items-center gap-2 btn btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all"
+        class="inline-flex items-center px-8 py-4 bg-amber-800 text-white text-lg font-semibold rounded-full hover:bg-amber-900 transition-all shadow-lg hover:shadow-xl"
       >
-        ✨ 今天神要對我說什麼？
+        <span class="mr-2">✨</span>
+        今天神要對我說什麼？
       </a>
     </div>
   </section>
   
-  <!-- 分類導航 -->
-  <section class="py-12 bg-white">
+  <!-- 分類區塊 -->
+  <section class="py-12 md:py-16 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {siteConfig.categories.map((cat) => (
-          <a
-            href={`/category/${cat.slug}`}
-            class="card p-6 text-center hover:scale-105 transition-transform"
-          >
-            <span class="text-4xl mb-2 block">{cat.icon}</span>
-            <h3 class="font-bold text-gray-800">{cat.name}</h3>
-            <p class="text-sm text-gray-500 mt-1">{cat.description}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-  
-  <!-- 最新文章 -->
-  <section class="py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-800">📝 最新文章</h2>
-      </div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">探索內容</h2>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {latestPosts.map((post) => {
-          const categoryInfo = siteConfig.categories.find(c => c.slug === post.data.category);
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {siteConfig.categories.map((category, index) => {
+          const icons = ['📖', '📚', '❓'];
+          const colors = [
+            'bg-amber-50 border-amber-200 hover:border-amber-400 hover:bg-amber-100',
+            'bg-blue-50 border-blue-200 hover:border-blue-400 hover:bg-blue-100',
+            'bg-purple-50 border-purple-200 hover:border-purple-400 hover:bg-purple-100',
+          ];
           return (
-            <a href={`/posts/${post.slug}`} class="card overflow-hidden hover:scale-[1.02] transition-transform">
-              {post.data.image && (
-                <img
-                  src={post.data.image}
-                  alt={post.data.title}
-                  class="w-full h-40 object-cover"
-                  loading="lazy"
-                />
-              )}
-              <div class="p-5">
-                {categoryInfo && (
-                  <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                    {categoryInfo.icon} {categoryInfo.name}
-                  </span>
-                )}
-                <h3 class="font-bold text-gray-800 mt-2 mb-2 line-clamp-2">
-                  {post.data.title}
-                </h3>
-                <p class="text-gray-500 text-sm line-clamp-2">
-                  {post.data.description}
-                </p>
+            <a 
+              href={`/category/${category.slug}`}
+              class={`block p-6 rounded-xl border-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg ${colors[index % 3]}`}
+            >
+              <div class="text-4xl mb-4">{icons[index % 3]}</div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">{category.name}</h3>
+              <p class="text-gray-600">{category.description}</p>
+              <div class="mt-4 text-primary font-medium text-sm">
+                查看文章 →
               </div>
             </a>
           );
@@ -95,28 +65,78 @@ const featuredPosts = allPosts
     </div>
   </section>
   
-  <!-- 工具區塊 -->
-  <section class="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold mb-4 text-gray-800">🛠️ 實用工具</h2>
-      <p class="text-gray-600 mb-8">幫助你更親近神的小工具</p>
-      <div class="grid md:grid-cols-3 gap-6">
-        <a href="/tools/daily-verse" class="card p-6 hover:scale-105 transition-transform">
-          <span class="text-4xl mb-3 block">🎯</span>
-          <h3 class="font-bold text-gray-800">今日經文</h3>
-          <p class="text-sm text-gray-500 mt-2">每日一節經文與啟示</p>
-        </a>
-        <a href="/tools/prayer-generator" class="card p-6 hover:scale-105 transition-transform">
-          <span class="text-4xl mb-3 block">🙏</span>
-          <h3 class="font-bold text-gray-800">禱告產生器</h3>
-          <p class="text-sm text-gray-500 mt-2">根據主題產生禱告詞</p>
-        </a>
-        <a href="/tools/bible-quiz" class="card p-6 hover:scale-105 transition-transform">
-          <span class="text-4xl mb-3 block">❓</span>
-          <h3 class="font-bold text-gray-800">聖經問答</h3>
-          <p class="text-sm text-gray-500 mt-2">測試你的聖經知識</p>
+  <!-- 快速工具 -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="bg-gradient-to-r from-amber-700 to-amber-800 rounded-2xl p-8 md:p-12 text-center text-white">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">🙏 今日經文</h2>
+        <p class="text-amber-100 mb-6">每天一節經文，聆聽神對你說的話</p>
+        <a 
+          href="/tools/daily-verse"
+          class="inline-flex items-center px-6 py-3 bg-white text-amber-800 font-semibold rounded-full hover:bg-amber-50 transition-all"
+        >
+          立即體驗 →
         </a>
       </div>
     </div>
   </section>
+  
+  <!-- 精選文章 -->
+  {recentPosts.length > 0 && (
+    <section class="py-12 md:py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">最新文章</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {recentPosts.map(post => (
+            <article class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              {post.data.image && (
+                <a href={`/posts/${post.slug}`}>
+                  <img 
+                    src={post.data.image} 
+                    alt={post.data.imageAlt || post.data.title}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                </a>
+              )}
+              <div class="p-6">
+                <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-amber-100 rounded-full mb-3">
+                  {siteConfig.categories.find(c => c.slug === post.data.category)?.name || post.data.category}
+                </span>
+                <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
+                  <a href={`/posts/${post.slug}`} class="hover:text-primary transition-colors">
+                    {post.data.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 text-sm line-clamp-2 mb-4">
+                  {post.data.description}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-400">
+                    {new Date(post.data.publishDate).toLocaleDateString('zh-TW')}
+                  </span>
+                  <a 
+                    href={`/posts/${post.slug}`}
+                    class="text-primary text-sm font-medium hover:underline"
+                  >
+                    閱讀更多 →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

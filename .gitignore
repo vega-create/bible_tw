@@ -1,0 +1,11 @@
+# 環境變數
+.env
+
+# 依賴
+node_modules/
+
+# 建置輸出
+dist/
+
+# 系統檔案
+.DS_Store

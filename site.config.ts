@@ -5,16 +5,16 @@
 export const siteConfig = {
   // 基本資訊
   name: "聖經靈修網",
-  description: "每日靈修、聖經導讀、基督徒生活指南",
+  description: "每日靈修、聖經導讀、信仰問答",
   url: "https://bible.freshblogs.cc",
-  author: "Your Name",
+  author: "Bible Blog",
   language: "zh-TW",
 
   // SEO 設定
   seo: {
     titleTemplate: "%s | 聖經靈修網",
     defaultTitle: "聖經靈修網 - 每日靈修與聖經導讀",
-    defaultDescription: "提供每日靈修、聖經經文解釋、基督徒生活指南。",
+    defaultDescription: "提供每日靈修、聖經經文解釋、信仰問答，幫助你更認識神的話語。",
     defaultImage: "/images/og-default.jpg",
   },
 
@@ -36,12 +36,10 @@ export const siteConfig = {
     measurementId: "G-XXXXXXXXXX",
   },
 
-  // 文章分類
+  // 文章分類（只保留三個）
   categories: [
     { slug: "daily-devotion", name: "每日靈修", description: "每天的靈修短文" },
     { slug: "bible-study", name: "聖經導讀", description: "深入理解聖經" },
-    { slug: "christian-life", name: "基督徒生活", description: "信仰生活應用" },
-    { slug: "prayer", name: "禱告專區", description: "禱告方法與見證" },
     { slug: "faq", name: "信仰問答", description: "常見問題解答" },
   ],
 
@@ -59,15 +57,10 @@ export const siteConfig = {
   footerLinks: [
     { name: "隱私權政策", href: "/privacy" },
     { name: "使用條款", href: "/terms" },
-    { name: "聯絡我們", href: "/contact" },
   ],
 
-  // 社群連結
-  social: {
-    facebook: "",
-    instagram: "",
-    youtube: "",
-  },
+  // 社群連結（暫不使用）
+  social: {},
 };
 
 export default siteConfig;

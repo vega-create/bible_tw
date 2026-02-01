@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../../site.config';
+---
+
+<BaseLayout title="關於我們">
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">關於本站</h1>
+    
+    <div class="prose prose-lg">
+      <p class="text-xl text-gray-600 mb-8">
+        {siteConfig.name} 是一個聖經資源網站，提供經文導讀、靈修短文及信仰相關內容。
+      </p>
+      
+      <h2>網站內容</h2>
+      <ul>
+        <li><strong>每日靈修</strong> - 每日靈修短文</li>
+        <li><strong>聖經導讀</strong> - 經文解釋與應用</li>
+        <li><strong>信仰問答</strong> - 常見問題解答</li>
+        <li><strong>今日經文</strong> - 隨機經文產生器</li>
+      </ul>
+      
+      <h2>免責聲明</h2>
+      <p>
+        本站內容僅供參考，不代表任何教派立場。經文引用自公開版本。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

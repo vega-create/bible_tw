@@ -1,162 +1,368 @@
 /**
- * 批量產文腳本
+ * SEO 文章批量產生器
  * 
  * 使用方式：
- * node scripts/generate-article.js --topic "禱告" --count 5
+ * node scripts/generate-article.js "如何禱告？"
+ * node scripts/generate-article.js --category faq --batch "問題1" "問題2"
  * node scripts/generate-article.js --file keywords.csv
  */
 
-const fs = require('fs');
-const path = require('path');
+import 'dotenv/config';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// 文章模板
-const articleTemplate = (data) => `---
-title: "${data.title}"
-description: "${data.description}"
-publishDate: "${data.publishDate}"
-category: "${data.category}"
-tags: [${data.tags.map(t => `"${t}"`).join(', ')}]
-image: "${data.image}"
-imageAlt: "${data.imageAlt}"
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
+
+// 台灣常見名字列表
+const NAMES = [
+  '志豪', '怡君', '建宏', '淑芬', '俊傑', '雅琪', '宗翰', '佳穎',
+  '柏翰', '詩涵', '冠廷', '欣怡', '家豪', '雅雯', '承恩', '筱婷',
+  '宏仁', '美玲', '彥廷', '思妤', '育誠', '佩珊', '哲瑋', '曉萱',
+  '信宏', '惠婷', '威廷', '雅芳', '嘉豪', '靜宜'
+];
+
+// 圖片搜尋關鍵字列表（隨機選擇避免重複）
+const IMAGE_QUERIES = [
+  'bible book reading',
+  'christian prayer hands',
+  'church light window',
+  'cross sunset sky',
+  'peaceful nature morning',
+  'candle light prayer',
+  'open bible pages',
+  'worship hands raised',
+  'sunrise hope nature',
+  'person thinking peaceful',
+  'family praying together',
+  'bible study group',
+  'quiet meditation nature',
+  'light through clouds',
+  'peaceful lake reflection',
+];
+
+// 隨機選取
+function getRandomItem(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+// 檢查 API Key
+if (!OPENAI_API_KEY) {
+  console.error('❌ 請在 .env 設定 OPENAI_API_KEY');
+  process.exit(1);
+}
+
+// ===== 產生單篇文章 =====
+async function generateArticle(keyword, index = 0, total = 1, forceCategory = null) {
+  console.log(`\n[${index + 1}/${total}] 🚀 產生文章：${keyword}`);
+
+  try {
+    console.log('  📝 產生內容中...');
+    const article = await generateContent(keyword, forceCategory);
+
+    console.log('  🖼️ 搜尋圖片中...');
+    const imageUrl = await fetchImage();
+
+    const markdown = createMarkdown(article, imageUrl);
+    const slug = createSlug(keyword);
+    const filePath = path.join(__dirname, '..', 'src', 'content', 'posts', `${slug}.md`);
+    fs.writeFileSync(filePath, markdown, 'utf8');
+
+    console.log(`  ✅ 完成：${slug}.md（分類：${article.category}）`);
+
+    if (index < total - 1) {
+      await sleep(2000);
+    }
+
+    return { success: true, slug };
+  } catch (error) {
+    console.error(`  ❌ 失敗：${error.message}`);
+    return { success: false, error: error.message };
+  }
+}
+
+// ===== OpenAI API =====
+async function generateContent(keyword, forceCategory = null) {
+  const randomName = getRandomItem(NAMES);
+
+  const categoryInstruction = forceCategory
+    ? `"category": "${forceCategory}",  // 必須使用這個分類`
+    : `"category": "daily-devotion/bible-study/faq 擇一",`;
+
+  const prompt = `你是一位專業的基督教內容作家，請針對「${keyword}」寫一篇 SEO 優化的繁體中文文章。
+
+要求：
+- 主要內容 1800 字（不含 FAQ）
+- FAQ 部分額外 400-500 字（每題 100 字左右）
+- 總字數約 2300 字
+- 故事性開頭要有具體人物和情境
+- 故事主角請使用「${randomName}」這個名字
+- 不要使用小明、雅婷、瑪莉亞、約翰、大衛等常見名字
+- 每個段落內容要詳細、有深度
+- 引用多處相關經文
+- FAQ 回答要完整詳細
+- 所有內容請使用繁體中文
+${forceCategory ? `- 分類必須使用「${forceCategory}」` : ''}
+
+請用 JSON 格式輸出（注意：所有字串值都要用雙引號，字串內不能有換行）：
+
+{
+  "title": "文章標題（問句形式，10-20字）",
+  "description": "150字內 Meta 描述",
+  ${categoryInstruction}
+  "tags": ["標籤1", "標籤2", "標籤3"],
+  "storyOpening": "150-200字故事性開頭，主角是${randomName}",
+  "directAnswer": "80-100字直接回答",
+  "sections": [
+    {"title": "標題1", "content": "300-350字內容"},
+    {"title": "標題2", "content": "300-350字內容"},
+    {"title": "標題3", "content": "300-350字內容"},
+    {"title": "標題4", "content": "300-350字內容"}
+  ],
+  "bibleVerses": [
+    {"text": "經文1", "reference": "出處1"},
+    {"text": "經文2", "reference": "出處2"}
+  ],
+  "application": "200字實際應用",
+  "faq": [
+    {"question": "問題1？", "answer": "100字完整回答"},
+    {"question": "問題2？", "answer": "100字完整回答"},
+    {"question": "問題3？", "answer": "100字完整回答"},
+    {"question": "問題4？", "answer": "100字完整回答"}
+  ],
+  "conclusion": "100字結語"
+}
+
+重要：只輸出有效的 JSON，不要有任何其他文字或 markdown 標記。`;
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.7,
+      max_tokens: 4000,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (data.error) {
+    throw new Error(data.error.message);
+  }
+
+  const content = data.choices[0].message.content;
+
+  let cleanJson = content
+    .replace(/```json\n?/g, '')
+    .replace(/```\n?/g, '')
+    .trim();
+
+  try {
+    const parsed = JSON.parse(cleanJson);
+    // 強制覆蓋分類
+    if (forceCategory) {
+      parsed.category = forceCategory;
+    }
+    return parsed;
+  } catch (e) {
+    cleanJson = cleanJson
+      .replace(/[\x00-\x1F\x7F]/g, ' ')
+      .replace(/\n/g, ' ')
+      .replace(/\r/g, ' ')
+      .replace(/\t/g, ' ')
+      .replace(/\s+/g, ' ');
+
+    try {
+      const parsed = JSON.parse(cleanJson);
+      if (forceCategory) {
+        parsed.category = forceCategory;
+      }
+      return parsed;
+    } catch (e2) {
+      console.log('  ⚠️ JSON 原始內容：', content.substring(0, 500));
+      throw new Error('JSON 解析失敗，請重試');
+    }
+  }
+}
+
+// ===== Pexels API =====
+async function fetchImage() {
+  if (!PEXELS_API_KEY) {
+    return '/images/default-post.jpg';
+  }
+
+  // 隨機選一個搜尋關鍵字
+  const query = getRandomItem(IMAGE_QUERIES);
+
+  try {
+    const response = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=15&page=${Math.floor(Math.random() * 3) + 1}`,
+      { headers: { 'Authorization': PEXELS_API_KEY } }
+    );
+    const data = await response.json();
+
+    if (data.photos?.length > 0) {
+      const randomIndex = Math.floor(Math.random() * data.photos.length);
+      return data.photos[randomIndex].src.large;
+    }
+  } catch (error) {
+    console.log('  ⚠️ 圖片抓取失敗');
+  }
+
+  return '/images/default-post.jpg';
+}
+
+// ===== 組合 Markdown =====
+function createMarkdown(article, imageUrl) {
+  const today = new Date().toISOString().split('T')[0];
+
+  const verses = article.bibleVerses || [article.bibleVerse];
+  const versesMarkdown = verses.map(v =>
+    `> 「${v.text}」\n> \n> —— ${v.reference}`
+  ).join('\n\n');
+
+  return `---
+title: "${article.title}"
+description: "${article.description}"
+publishDate: "${today}"
+category: "${article.category}"
+tags: [${article.tags.map(t => `"${t}"`).join(', ')}]
+image: "${imageUrl}"
+imageAlt: "${article.title}"
 faq:
-${data.faq.map(f => `  - question: "${f.question}"
+${article.faq.map(f => `  - question: "${f.question}"
     answer: "${f.answer}"`).join('\n')}
 ---
 
-${data.storyOpening}
+${article.storyOpening}
 
-**${data.directAnswer}**
+**${article.directAnswer}**
 
-${data.content}
+${article.sections.map(s => `## ${s.title}
+
+${s.content}`).join('\n\n')}
+
+## 相關經文
+
+${versesMarkdown}
+
+## 實際應用
+
+${article.application}
 
 ## 常見問題 FAQ
 
-${data.faq.map(f => `### ${f.question}
+${article.faq.map(f => `### ${f.question}
 
 ${f.answer}`).join('\n\n')}
 
 ## 結語
 
-${data.conclusion}
+${article.conclusion}
 `;
-
-// 從命令行參數解析
-function parseArgs() {
-  const args = process.argv.slice(2);
-  const options = {};
-  
-  for (let i = 0; i < args.length; i += 2) {
-    const key = args[i].replace('--', '');
-    options[key] = args[i + 1];
-  }
-  
-  return options;
 }
 
-// 產生文章資料（實際使用時會呼叫 AI API）
-function generateArticleData(keyword, category) {
-  const today = new Date().toISOString().split('T')[0];
-  
-  return {
-    title: keyword,
-    description: `深入探討「${keyword}」這個問題，提供實用的解答與建議。`,
-    publishDate: today,
-    category: category || 'faq',
-    tags: ['信仰問答', '基督徒生活'],
-    image: '/images/posts/default.jpg',
-    imageAlt: keyword,
-    storyOpening: `許多人都有這樣的疑問：「${keyword}」如果你也正在思考這個問題，這篇文章會幫助你找到答案。`,
-    directAnswer: '這個問題的答案需要從聖經的角度來理解。讓我們一起來探討。',
-    content: `## 從聖經的角度理解
-
-這是文章的主要內容區塊，會由 AI 根據問句關鍵字產生。
-
-## 實際應用
-
-提供讀者具體的行動建議。
-
-## 相關經文
-
-引用相關的聖經經文支持論點。`,
-    faq: [
-      { question: '相關問題 1？', answer: '回答 1' },
-      { question: '相關問題 2？', answer: '回答 2' },
-      { question: '相關問題 3？', answer: '回答 3' },
-    ],
-    conclusion: '希望這篇文章對你有幫助。如果還有其他問題，歡迎留言討論！',
-  };
-}
-
-// 產生文章檔案
-function generateArticle(keyword, category) {
-  const data = generateArticleData(keyword, category);
-  const content = articleTemplate(data);
-  
-  // 產生檔案名稱 (slug)
-  const slug = keyword
+// ===== 工具函數 =====
+function createSlug(keyword) {
+  return keyword
     .toLowerCase()
     .replace(/？/g, '')
     .replace(/[^\u4e00-\u9fa5a-z0-9]+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
-  
-  const filePath = path.join(__dirname, '..', 'src', 'content', 'posts', `${slug}.md`);
-  
-  fs.writeFileSync(filePath, content, 'utf8');
-  console.log(`✅ 已產生: ${slug}.md`);
-  
-  return filePath;
 }
 
-// 主程式
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function readKeywordsFromCSV(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  return content
+    .split('\n')
+    .slice(1)
+    .map(line => line.split(',')[0].trim())
+    .filter(Boolean);
+}
+
+// ===== 主程式 =====
 async function main() {
-  const options = parseArgs();
-  
-  if (options.topic && options.count) {
-    // 單一主題批量產生
-    console.log(`\n🚀 開始產生 ${options.count} 篇「${options.topic}」相關文章...\n`);
-    
-    // 實際使用時，這裡會呼叫 AI 產生多個問句
-    const keywords = [
-      `${options.topic}是什麼？`,
-      `為什麼要${options.topic}？`,
-      `如何${options.topic}？`,
-      `${options.topic}有什麼好處？`,
-      `${options.topic}的方法有哪些？`,
-    ].slice(0, parseInt(options.count));
-    
-    keywords.forEach(keyword => {
-      generateArticle(keyword, options.category || 'faq');
-    });
-    
-  } else if (options.file) {
-    // 從 CSV 批量產生
-    console.log(`\n🚀 從 ${options.file} 批量產生文章...\n`);
-    
-    const csvContent = fs.readFileSync(options.file, 'utf8');
-    const lines = csvContent.trim().split('\n').slice(1); // 跳過標題列
-    
-    lines.forEach(line => {
-      const [keyword, category] = line.split(',').map(s => s.trim());
-      if (keyword) {
-        generateArticle(keyword, category);
-      }
-    });
-    
-  } else {
-    console.log(`
-使用方式：
-  node generate-article.js --topic "禱告" --count 5 [--category prayer]
-  node generate-article.js --file keywords.csv
+  const args = process.argv.slice(2);
 
-CSV 格式：
-  keyword,category
-  如何禱告？,prayer
-  什麼是三位一體？,bible-study
-    `);
-  }
+  if (args.length === 0) {
+    console.log(`
+📝 SEO 文章批量產生器
+
+使用方式：
+  單篇：node scripts/generate-article.js "如何禱告？"
   
-  console.log('\n✨ 完成！\n');
+  指定分類：node scripts/generate-article.js --category faq "問題"
+  
+  批量（指定分類）：
+  node scripts/generate-article.js --category faq --batch "問題1" "問題2"
+  
+  CSV：node scripts/generate-article.js --file keywords.csv
+
+分類選項：daily-devotion / bible-study / faq
+    `);
+    process.exit(0);
+  }
+
+  let keywords = [];
+  let forceCategory = null;
+  let i = 0;
+
+  // 解析參數
+  while (i < args.length) {
+    if (args[i] === '--category') {
+      forceCategory = args[i + 1];
+      i += 2;
+    } else if (args[i] === '--file') {
+      keywords = readKeywordsFromCSV(args[i + 1]);
+      i += 2;
+    } else if (args[i] === '--batch') {
+      keywords = args.slice(i + 1);
+      break;
+    } else {
+      keywords = [args[i]];
+      i++;
+    }
+  }
+
+  if (keywords.length === 0) {
+    console.error('❌ 請提供關鍵字');
+    process.exit(1);
+  }
+
+  console.log(`\n📚 準備產生 ${keywords.length} 篇文章`);
+  if (forceCategory) {
+    console.log(`📁 指定分類：${forceCategory}`);
+  }
+  console.log('');
+  keywords.forEach((k, idx) => console.log(`  ${idx + 1}. ${k}`));
+
+  const results = [];
+  for (let idx = 0; idx < keywords.length; idx++) {
+    const result = await generateArticle(keywords[idx], idx, keywords.length, forceCategory);
+    results.push(result);
+  }
+
+  const success = results.filter(r => r.success).length;
+  const failed = results.filter(r => !r.success).length;
+
+  console.log(`\n========================================`);
+  console.log(`✅ 成功：${success} 篇`);
+  if (failed > 0) console.log(`❌ 失敗：${failed} 篇`);
+  console.log(`========================================\n`);
 }
 
-main();
+main().catch(console.error);

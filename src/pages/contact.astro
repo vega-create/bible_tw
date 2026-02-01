@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../../site.config';
+---
+
+<BaseLayout title="聯絡我們">
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">聯絡我們</h1>
+    
+    <div class="prose prose-lg mb-8">
+      <p>
+        感謝您對 {siteConfig.name} 的關注！如果您有任何問題、建議或回饋，
+        歡迎透過以下方式與我們聯繫。
+      </p>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm p-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">📧 電子郵件</h2>
+      <p class="text-gray-600 mb-6">
+        一般諮詢：<a href="mailto:contact@freshblogs.cc" class="text-primary hover:underline">contact@freshblogs.cc</a>
+      </p>
+      
+      <h2 class="text-xl font-bold text-gray-800 mb-4">💬 社群媒體</h2>
+      <p class="text-gray-600">
+        您也可以透過我們的社群媒體帳號與我們互動（即將開放）
+      </p>
+    </div>
+    
+    <div class="mt-8 p-6 bg-amber-50 rounded-xl">
+      <p class="text-gray-600">
+        💡 <strong>小提醒：</strong>我們會盡快回覆您的訊息，通常在 1-3 個工作天內。
+      </p>
+    </div>
+  </div>
+</BaseLayout>
