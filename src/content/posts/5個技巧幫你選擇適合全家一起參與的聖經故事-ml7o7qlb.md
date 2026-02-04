@@ -30,8 +30,6 @@ author: "vegalin1029@gmail.com"
 
 美玲思考著靈修的目的，是希望增進家庭的靈性連結，還是想要教導孩子們正確的價值觀？透過這個問題，美玲選擇了一些能教導愛、包容和信任的故事，讓全家能在靈修中獲得成長。
 
-
-(https://images.pexels.com/photos/6860819/pexels-photo-6860819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、選擇吸引人的故事
 
 ### 1. 挑選經典故事
