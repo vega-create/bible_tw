@@ -16,8 +16,6 @@ faq:
 author: "vegalin1029@gmail.com"
 ---
 
-## 開頭故事
-
 美玲坐在餐桌旁，手中翻著一本厚厚的聖經，心裡思索著如何能讓全家人一起享受聖經故事的美好時光。她的孩子們，小志和小雅，對於長篇的經文總是興趣缺缺，而丈夫阿強則希望能找到一些能引起全家共鳴的故事。美玲決定要為這個家庭的靈修時光注入一點創意，讓聖經故事不再是枯燥的文字，而是可以一起分享的生命體驗。
 
 **美玲希望找到能吸引全家參與的聖經故事，透過適合的技巧讓每個人都能感受到神的話語。**
@@ -33,10 +31,7 @@ author: "vegalin1029@gmail.com"
 美玲思考著靈修的目的，是希望增進家庭的靈性連結，還是想要教導孩子們正確的價值觀？透過這個問題，美玲選擇了一些能教導愛、包容和信任的故事，讓全家能在靈修中獲得成長。
 
 
-
-![A focused close-up of a Bible page highlighting Exodus 40:34, depicting profound religious themes.](https://images.pexels.com/photos/5238219/pexels-photo-5238219.jpeg?auto=compress&cs=tinysrgb&d
-
-![Two individuals sitting on a sofa reading and discussing the Bible indoors.](https://images.pexels.com/photos/6860819/pexels-photo-6860819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
+(https://images.pexels.com/photos/6860819/pexels-photo-6860819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 pr=2&h=650&w=940)
 ## 二、選擇吸引人的故事
 
