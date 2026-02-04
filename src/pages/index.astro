@@ -6,8 +6,9 @@ import { getCollection } from 'astro:content';
 
 // 取得最新文章
 const allPosts = await getCollection('posts');
+const now = new Date();
 const recentPosts = allPosts
-  .filter(post => !post.data.draft)
+  .filter(post => !post.data.draft && new Date(post.data.publishDate) <= now)
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
   .slice(0, 6);
 ---
