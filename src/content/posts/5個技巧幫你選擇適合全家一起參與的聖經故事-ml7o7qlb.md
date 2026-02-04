@@ -32,7 +32,6 @@ author: "vegalin1029@gmail.com"
 
 
 (https://images.pexels.com/photos/6860819/pexels-photo-6860819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
-pr=2&h=650&w=940)
 ## 二、選擇吸引人的故事
 
 ### 1. 挑選經典故事
