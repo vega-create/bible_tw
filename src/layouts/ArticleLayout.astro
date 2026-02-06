@@ -43,6 +43,7 @@ const formattedDate = publishDate.toLocaleDateString(siteConfig.language, {
   month: 'long',
   day: 'numeric',
 });
+const allHeadings = faqs.length > 0 ? [...headings, { depth: 2, slug: "faq-section", text: "常見問題 FAQ" }] : headings;
 ---
 
 <BaseLayout
@@ -135,7 +136,7 @@ const formattedDate = publishDate.toLocaleDateString(siteConfig.language, {
     )}
     
     <!-- 目錄 -->
-    <TableOfContents headings={headings} />
+    <TableOfContents headings={allHeadings} />
     
     <!-- 目錄下方廣告 -->
     <AdSense slot="inArticle" />
@@ -151,7 +152,7 @@ const formattedDate = publishDate.toLocaleDateString(siteConfig.language, {
         <AdSense slot="beforeFaq" />
         
         <!-- FAQ 顯示 -->
-        <section class="mt-12 mb-8">
+        <section id="faq-section" class="mt-12 mb-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-6">❓ 常見問題 FAQ</h2>
           <div class="space-y-4">
             {faqs.map((faq, i) => (
