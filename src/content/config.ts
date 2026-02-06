@@ -14,9 +14,11 @@ const posts = defineCollection({
     author: z.string().optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
-    faqs: z.array(z.object({
-      question: z.string(),
-      answer: z.string(),
+    faq: z.array(z.object({
+      q: z.string().optional(),
+      a: z.string().optional(),
+      question: z.string().optional(),
+      answer: z.string().optional(),
     })).default([]),
   }),
 });
