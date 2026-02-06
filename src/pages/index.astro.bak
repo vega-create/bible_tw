@@ -1,7 +1,6 @@
 ---
 // 首頁
 import BaseLayout from '../layouts/BaseLayout.astro';
-import WebSiteSchema from '../components/WebSiteSchema.astro';
 import { siteConfig } from '../../site.config';
 import { getCollection } from 'astro:content';
 
@@ -15,9 +14,6 @@ const recentPosts = allPosts
 ---
 
 <BaseLayout>
-  <!-- Schema 結構化資料 -->
-  <WebSiteSchema />
-
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-amber-50 to-orange-100 py-16 md:py-24">
     <div class="max-w-4xl mx-auto px-4 text-center">

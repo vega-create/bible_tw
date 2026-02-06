@@ -1,28 +1,26 @@
 ---
-// FAQSchema.astro - FAQ 結構化資料，讓 Google 顯示問答摘要
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
+/**
+ * FAQSchema - 同時支援兩種格式
+ * { q, a } 和 { question, answer }
+ */
 interface Props {
-  faqs: FAQ[];
+  faqs: { q?: string; a?: string; question?: string; answer?: string }[];
 }
 
 const { faqs } = Astro.props;
 
-const faqSchema = {
+const schema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
+  "mainEntity": faqs.map(item => ({
     "@type": "Question",
-    "name": faq.question,
+    "name": item.question || item.q || '',
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": faq.answer,
+      "text": item.answer || item.a || '',
     },
   })),
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
