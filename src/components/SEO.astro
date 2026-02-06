@@ -1,5 +1,6 @@
 ---
-// SEO.astro - 處理所有 Meta 標籤、Open Graph、Schema
+// SEO.astro - 處理所有 Meta 標籤、Open Graph
+// Schema 結構化資料改由 ArticleSchema / WebSiteSchema 等專用元件處理
 import { siteConfig } from '../../site.config';
 
 interface Props {
@@ -50,26 +51,3 @@ const canonicalUrl = Astro.url.href;
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-<!-- 網站 Schema -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": siteConfig.name,
-  "url": siteConfig.url,
-  "description": siteConfig.description,
-})} />
-
-<!-- 文章 Schema -->
-{article && (
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": title,
-    "description": description,
-    "image": fullImageUrl,
-    "datePublished": publishDate,
-    "author": { "@type": "Person", "name": siteConfig.author },
-    "publisher": { "@type": "Organization", "name": siteConfig.name },
-  })} />
-)}
