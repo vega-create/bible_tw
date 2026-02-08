@@ -5,9 +5,6 @@ import sitemap from '@astrojs/sitemap';
 import { siteConfig } from './site.config';
 export default defineConfig({
   site: siteConfig.url,
-  integrations: [
-    tailwind(),
-    react(),
     sitemap({
       filter: (page) => true,
     }),
