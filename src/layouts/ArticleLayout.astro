@@ -89,19 +89,6 @@ const allHeadings = faqs.length > 0 ? [...headings, { depth: 2, slug: "faq-secti
       <span class="text-gray-500">{title}</span>
     </nav>
 
-    <!-- 麵包屑 -->
-    <nav class="text-sm text-gray-400 mb-6">
-      <a href="/" class="hover:text-primary transition-colors">首頁</a>
-      {categoryInfo && (
-        <>
-          <span class="mx-2">›</span>
-          <a href={`/category/${categorySlug}`} class="hover:text-primary transition-colors">{categoryInfo.icon} {categoryInfo.name}</a>
-        </>
-      )}
-      <span class="mx-2">›</span>
-      <span class="text-gray-500">{title}</span>
-    </nav>
-
     <!-- 文章標頭 -->
     <header class="mb-8">
       <!-- 分類標籤 -->
