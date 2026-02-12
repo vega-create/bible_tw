@@ -1,0 +1,72 @@
+---
+import { siteConfig } from '../../site.config';
+---
+
+<div class="author-box">
+  <div class="author-inner">
+    <div class="author-avatar">✝️</div>
+    <div class="author-info">
+      <p class="author-label">關於作者</p>
+      <p class="author-name">{siteConfig.author}</p>
+      <p class="author-bio">一群熱愛聖經的基督徒，用簡單溫暖的文字，陪你每天親近神的話語。</p>
+      <a href="/about/" class="author-link">了解更多 →</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .author-box {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: #f8f6f3;
+    border-radius: 12px;
+    border: 1px solid #e8e2d9;
+  }
+  .author-inner {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .author-avatar {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid #e8e2d9;
+  }
+  .author-label {
+    font-size: 0.75rem;
+    color: #8a8078;
+    margin-bottom: 0.15rem;
+  }
+  .author-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a4035;
+    margin-bottom: 0.4rem;
+  }
+  .author-bio {
+    font-size: 0.9rem;
+    color: #6a5d4e;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .author-link {
+    font-size: 0.85rem;
+    color: #7c6a55;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .author-link:hover {
+    color: #5a4a38;
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
+    .author-inner { flex-direction: column; align-items: center; text-align: center; }
+  }
+</style>

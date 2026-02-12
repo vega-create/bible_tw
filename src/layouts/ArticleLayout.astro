@@ -6,6 +6,7 @@ import ArticleSchema from '../components/ArticleSchema.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 import AdSense from '../components/AdSense.astro';
 import ShareButtons from '../components/ShareButtons.astro';
+import AuthorBox from '../components/AuthorBox.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import { siteConfig } from '../../site.config';
 
@@ -192,6 +193,9 @@ const allHeadings = faqs.length > 0 ? [...headings, { depth: 2, slug: "faq-secti
       </>
     )}
     
+    <!-- 作者介紹 -->
+    <AuthorBox />
+
     <!-- 分享按鈕 -->
     <ShareButtons title={title} />
     
