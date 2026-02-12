@@ -1,6 +1,6 @@
 ---
 title: "忙碌生活也能靈修？這些技巧讓你做到！"
-description: "忙碌生活也能靈修？這些技巧讓你做到！"
+description: "宏仁的生活幾乎被忙碌填滿，早上六點鐘起床，匆匆吃過早餐後便趕往公司，工作中總是面對著無盡的報告和會議。⋯⋯"
 publishDate: 2026-02-07
 category: "daily-devotion"
 tags: []
@@ -33,13 +33,11 @@ author: "作者"
 
 
 
-![Top-down view of French breakfast with croissants, coffee, and fruits.](https://images.pexels.com/photos/619328/pexels-photo-619328.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、靈修的實際技巧
 
 ### 1. 利用早晨時光
 早晨是一天中最寧靜的時刻，宏仁開始嘗試在起床後的幾分鐘內，靜坐思考當天
 
-![A detailed statue of the Sacred Heart of Jesus with a serene background, symbolizing spirituality and Christian faith.](https://images.pexels.com/photos/7566209/pexels-photo-7566209.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 的計劃，並禱告交託給神。透過感恩的禱告，他發現自己的心靈變得更加平靜。
 
 ### 2. 隨身攜帶靈修材料
@@ -69,4 +67,3 @@ author: "作者"
 2. 利用通勤或等候的時間，閱讀靈修書籍或聖經，加深對神的認識。
 3. 與朋友分享靈修的經歷，形成靈修小組，互相鼓勵與支持。
 
-![A serene reflection of a Buddha statue captured in a tranquil pond, surrounded by nature.](https://images.pexels.com/photos/32555564/pexels-photo-32555564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

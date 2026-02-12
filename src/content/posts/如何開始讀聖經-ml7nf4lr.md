@@ -1,6 +1,6 @@
 ---
 title: "如何開始讀聖經"
-description: "如何開始讀聖經"
+description: "在一個陽光明媚的早晨，小文坐在窗邊，手中捧著一本厚厚的聖經。她曾經聽過朋友們分享聖經中的故事，心中充滿好奇，但又不知從何開始。⋯⋯"
 publishDate: 2026-02-04
 category: "daily-devotion"
 tags: []
@@ -24,7 +24,6 @@ author: "作者"
 
 
 
-![A close-up view of the Book of Haggai text in a Bible, showcasing detail and typography.](https://images.pexels.com/photos/20528303/pexels-photo-20528303.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、選擇合適的版本
 
 ### 1. 聖經的多樣性
@@ -35,7 +34,6 @@ author: "作者"
 
 在
 
-![A serene adult nun in traditional attire prays with clasped hands outdoors.](https://images.pexels.com/photos/5875482/pexels-photo-5875482.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 開始閱讀之前，了解聖經的歷史背景和文化脈絡是很重要的。這不僅能幫助我們更好地理解內容，還能讓我們在靈修過程中感受到更深的意義。你可以參考一些聖經背景書籍，或是參加小組討論，與他人分享學習的心得。
 
 ### 3. 設定閱讀目標
@@ -68,4 +66,3 @@ author: "作者"
 2. 參加小組學習，分享自己的體會，並聽取他人的見解。
 3. 記錄下你的靈修感受，並定期回顧，觀察自己的成長與變化。
 
-![An open Bible on a wooden table with a cross in the background, suggesting a spiritual theme.](https://images.pexels.com/photos/7076749/pexels-photo-7076749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

@@ -37,7 +37,8 @@ const {
   faqs = [],
 } = Astro.props;
 
-const categoryInfo = siteConfig.categories.find(c => c.slug === category);
+const categoryInfo = siteConfig.categories.find(c => c.slug === category || c.name === category);
+const categorySlug = categoryInfo?.slug || category;
 const formattedDate = publishDate.toLocaleDateString(siteConfig.language, {
   year: 'numeric',
   month: 'long',
@@ -70,7 +71,7 @@ const allHeadings = faqs.length > 0 ? [...headings, { depth: 2, slug: "faq-secti
   />
   <BreadcrumbSchema items={[
     { name: '首頁', url: '/' },
-    ...(categoryInfo ? [{ name: categoryInfo.name, url: `/category/${category}` }] : []),
+    ...(categoryInfo ? [{ name: categoryInfo.name, url: `/category/${categorySlug}` }] : []),
     { name: title },
   ]} />
 
@@ -80,7 +81,7 @@ const allHeadings = faqs.length > 0 ? [...headings, { depth: 2, slug: "faq-secti
       <!-- 分類標籤 -->
       {categoryInfo && (
         <a
-          href={`/category/${category}`}
+          href={`/category/${categorySlug}`}
           class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4 hover:bg-primary/20 transition-colors"
         >
           {categoryInfo.icon} {categoryInfo.name}

@@ -1,6 +1,6 @@
 ---
 title: "靈修如何改變媽媽的生活？探索5大意想不到的好處"
-description: "靈修如何改變媽媽的生活？探索5大意想不到的好處"
+description: "信宏坐在陽台上，手中捧著一本靈修書，陽光透過樹葉的縫隙灑在他的臉上。這幾個月來，他的生活因為靈修而發生了翻天覆地的變化。⋯⋯"
 publishDate: 2026-02-06
 category: "daily-devotion"
 tags: []
@@ -67,7 +67,6 @@ author: "作者"
 
 
 
-![Adult male praying outdoors with Holy Bible, conveying faith and spirituality.](https://images.pexels.com/photos/5531358/pexels-photo-5531358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、靈修如何促進家庭關係
 
 ### 1. 增進家庭溝通
@@ -97,8 +96,7 @@ author: "作者"
 
 | 項目 |
 
-![A young man reads a Bible in a prayer group setting in Ciudad de México.](https://images.pexels.com/photos/21782665/pexels-photo-21782665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
- 說明 | 建議 |
+說明 | 建議 |
 | --- | --- | --- |
 | 和諧氛圍 | 靈修使家庭成員之間更包容 | 每周一起參加教會活動 |
 | 共同價值觀 | 透過靈修建立共同信仰 | 討論靈修中的學習 |
@@ -155,4 +153,3 @@ author: "作者"
 - **書寫靈修日記**：記錄每日靈修的感受與啟發，幫助自己反思與成長。
 - **家庭靈修**：定期與家人一起進行靈修，分享彼此的學習，增進家庭的和諧。
 
-![Close-up of a woman writing in a journal while sitting comfortably indoors.](https://images.pexels.com/photos/6633771/pexels-photo-6633771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

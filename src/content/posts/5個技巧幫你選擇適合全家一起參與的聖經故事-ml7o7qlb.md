@@ -1,6 +1,6 @@
 ---
 title: "5個技巧，幫你選擇適合全家一起參與的聖經故事"
-description: "5個技巧，幫你選擇適合全家一起參與的聖經故事"
+description: "美玲坐在餐桌旁，手中翻著一本厚厚的聖經，心裡思索著如何能讓全家人一起享受聖經故事的美好時光。⋯⋯"
 publishDate: 2026-02-04
 category: "bible-study"
 tags: []
@@ -62,4 +62,3 @@ author: "作者"
 2. **選擇故事**：挑選適合各年齡層的聖經故事，並加入互動的元素。
 3. **定期靈修**：建立固定的家庭靈修時間，創造良好的分享氛圍。
 
-![A family gathers for a heartfelt prayer before enjoying a festive meal.](https://images.pexels.com/photos/5591220/pexels-photo-5591220.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

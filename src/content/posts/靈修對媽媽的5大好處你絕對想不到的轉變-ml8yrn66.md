@@ -1,6 +1,6 @@
 ---
 title: "靈修對媽媽的5大好處，你絕對想不到的轉變"
-description: "靈修對媽媽的5大好處，你絕對想不到的轉變"
+description: "淑芬是一位全職媽媽，每天都要應對孩子的需求、家庭的瑣事以及工作的壓力。最近，她感到心力交瘁，常常覺得自己陷入了無休止的忙碌中，無法享受生活的美好。⋯⋯"
 publishDate: 2026-02-08
 category: "daily-devotion"
 tags: []
@@ -49,7 +49,6 @@ author: "作者"
 
 
 
-![A cozy setup of Bible reading with a cup of coffee, evoking a peaceful morning routine.](https://images.pexels.com/photos/8383490/pexels-photo-8383490.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、靈修對家庭關係的影響
 
 ### 1. 增強夫妻間的溝通
@@ -64,7 +63,6 @@ author: "作者"
 ### 2. 改善親子關係
 淑芬發現，靈修讓她更加專注於孩子的成長需求。她開始用心傾聽孩子的心聲，並在靈修中尋求神的智慧來教導孩子。這種互動不僅增進
 
-![A mother and son kneeling and praying together inside a serene church.](https://images.pexels.com/photos/9577185/pexels-photo-9577185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 了親子間的情感，也讓孩子感受到母親的愛與關懷。靈修的過程中，淑芬也學會了如何用更正面的方式來引導孩子，讓他們在愛中成長。
 
 ### 3. 建立家庭靈修的習慣
@@ -102,4 +100,3 @@ author: "作者"
 
 最後，靈修不僅是個人與神之間的交流，更是家庭和諧的重要基礎。透過靈修，每位母親都能成為家庭中的靈性引導者，帶領家人一起走向更豐盛的信仰生活。
 
-![Elegant statue of the Virgin Mary and Child Jesus with crowns, symbolizing Catholic devotion.](https://images.pexels.com/photos/35639825/pexels-photo-35639825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

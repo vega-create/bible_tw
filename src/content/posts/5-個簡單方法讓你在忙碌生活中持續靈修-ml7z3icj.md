@@ -1,6 +1,6 @@
 ---
 title: "5 個簡單方法，讓你在忙碌生活中持續靈修"
-description: "5 個簡單方法，讓你在忙碌生活中持續靈修"
+description: "雅芳坐在咖啡廳的角落，手中捧著一杯熱騰騰的咖啡。她的日程表上排得滿滿的，工作、家庭、社交活動，每一項都需要她全力以赴。⋯⋯"
 publishDate: 2026-02-05
 category: "daily-devotion"
 tags: []
@@ -36,14 +36,12 @@ author: "作者"
 
 
 
-![Ceramic coffee cup with blue accents resting on a wooden table, bathed in warm sunlight.](https://images.pexels.com/photos/29173447/pexels-photo-29173447.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、在通勤中靈修
 
 ### 1. 聽靈修播客
 
 雅芳在通勤的時候，會選擇聽一些靈修播客。這些播客不僅有靈修的內容，還有分享信仰故事的片段，讓她在車流中感受到神的
 
-![Picturesque street in Málaga, Spain featuring white houses and palm trees under a clear sky.](https://images.pexels.com/photos/22034269/pexels-photo-22034269.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 同在。這樣的習慣讓她即使在忙碌的交通中，也能不斷滋養自己的靈魂。
 
 ### 2. 使用手機靈修應用
@@ -82,4 +80,3 @@ author: "作者"
 4. 與家人一起進行靈修，增進彼此的信仰生活。
 5. 利用日常生活中的每一個小空間，與神同行。
 
-![Silhouette of a rosary cross hanging with sunrise background in Brazil, capturing spiritual serenity.](https://images.pexels.com/photos/2081128/pexels-photo-2081128.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

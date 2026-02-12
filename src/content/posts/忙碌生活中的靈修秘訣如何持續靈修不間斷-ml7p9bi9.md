@@ -1,6 +1,6 @@
 ---
 title: "忙碌生活中的靈修秘訣：如何持續靈修不間斷？"
-description: "忙碌生活中的靈修秘訣：如何持續靈修不間斷？"
+description: "建宏坐在公車上，窗外的風景不斷變換，心中卻感到空虛。身為一名忙碌的上班族，他的生活總是被工作、家庭和社交填滿。每當他想靜下心來靈修時，卻總是被各種瑣事打斷。⋯⋯"
 publishDate: 2026-02-06
 category: "daily-devotion"
 tags: []
@@ -30,7 +30,6 @@ author: "作者"
 
 
 
-![Top view of a morning devotional setup with bible, coffee, and notebook on a cozy textile background.](https://images.pexels.com/photos/8383487/pexels-photo-8383487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、在忙碌中持續靈修的秘訣
 
 ### 1. 設定固定的靈修時間
@@ -39,7 +38,6 @@ author: "作者"
 ### 2. 利用零碎時間
 在忙碌的工作中，
 
-![An open Holy Bible on a wooden table, showcasing scripture text, ideal for religious and spiritual themes.](https://images.pexels.com/photos/8814959/pexels-photo-8814959.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 建宏學會利用零碎的時間靈修。例如，在通勤的路上，他會聽聖經錄音或靈修播客，讓神的話語隨時陪伴他。這種方式不僅讓他隨時保持靈修的狀態，也讓他在繁瑣的工作中感受到神的安慰。
 
 ### 3. 與朋友一起靈修
@@ -68,4 +66,3 @@ author: "作者"
 
 建宏的靈修之旅告訴我們，無論生活多麼忙碌，靈修都可以在日常中持續進行。只要我們願意，神會在每個靈修的時刻，賜下祂的恩典與平安。
 
-![A congregation of men embracing and praying together in a church setting.](https://images.pexels.com/photos/15021636/pexels-photo-15021636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

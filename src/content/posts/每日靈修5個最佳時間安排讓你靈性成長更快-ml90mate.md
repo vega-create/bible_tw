@@ -1,6 +1,6 @@
 ---
 title: "每日靈修：5個最佳時間安排讓你靈性成長更快"
-description: "每日靈修：5個最佳時間安排讓你靈性成長更快"
+description: "宏仁坐在窗邊，陽光透過樹葉的縫隙灑在他身上。他手中捧著一本開著的聖經，靜靜地閱讀著。他的心中充滿了對神的渴望，想要在每天的忙碌中尋找與神更親密的關係。⋯⋯"
 publishDate: 2026-02-06
 category: "daily-devotion"
 tags: []
@@ -45,7 +45,6 @@ author: "作者"
 
 
 
-![Top view of a morning routine with Bible reading, coffee, and healthy breakfast.](https://images.pexels.com/photos/8383475/pexels-photo-8383475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、靈修的最佳時間安排
 
 ### 1. 早晨的靈修
@@ -54,7 +53,6 @@ author: "作者"
 ### 2. 午間靈修
 午餐後的短暫休息時間，
 
-![A priest reading a holy book in a church, illuminated by soft light.](https://images.pexels.com/photos/9589503/pexels-photo-9589503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 宏仁會選擇靜下心來，翻閱幾段聖經經文，並為自己和他人禱告。這樣的小靈修不僅能夠讓他重拾精神，也能減輕工作中的壓力。即使只有幾分鐘，這樣的靈修時間卻能在忙碌的生活中帶來心靈的安慰。
 
 | 項目 | 說明 | 建議 |
@@ -91,4 +89,3 @@ author: "作者"
 
 這樣的計畫不僅幫助宏仁更好地安排時間，也讓他在靈性成長的道路上更有方向感。
 
-![Women gathered around a table studying the Bible and religious texts in fellowship.](https://images.pexels.com/photos/31968536/pexels-photo-31968536.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

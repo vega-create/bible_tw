@@ -1,6 +1,6 @@
 ---
 title: "3個有效方法，引導孩子深入討論聖經教義"
-description: "3個有效方法，引導孩子深入討論聖經教義"
+description: "在一個陽光明媚的午後，育誠坐在客廳的沙發上，手裡拿著一本厚厚的聖經，眼神中透露著一絲思索。他的孩子小宇正在旁邊的地板上玩積木，偶爾抬頭看著爸爸。⋯⋯"
 publishDate: 2026-02-04
 category: "bible-study"
 tags: []
@@ -24,7 +24,6 @@ author: "作者"
 
 
 
-![Open Bible placed on a tree stump outdoors, symbolizing faith in nature.](https://images.pexels.com/photos/6186376/pexels-photo-6186376.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、運用故事引導討論
 
 ### 1. 故事的力量
@@ -35,7 +34,6 @@ author: "作者"
 
 在故事結束後，育誠會提出一些開放式問題，鼓勵小宇發表看法，這樣可以促進深
 
-![Ice rink bustling with people near a historic church in Kecskemét, Hungary.](https://images.pexels.com/photos/19421686/pexels-photo-19421686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 入的討論。問題可以是：「如果你是大衛，你會怎麼做？」或是「你覺得神為什麼選擇了大衛？」這些問題不僅能讓小宇思考，還能幫助他理解神的計劃和信仰的含義。
 
 ### 3. 角色扮演
@@ -68,4 +66,3 @@ author: "作者"
 2. **角色扮演**：透過遊戲的方式重現聖經故事，加深理解。
 3. **日常反思**：與孩子定期進行信仰生活的反思，讓他在生活中實踐所學。
 
-![Silhouette of a man praying beside an illuminated cross at night, evoking spirituality and meditation.](https://images.pexels.com/photos/3583084/pexels-photo-3583084.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)

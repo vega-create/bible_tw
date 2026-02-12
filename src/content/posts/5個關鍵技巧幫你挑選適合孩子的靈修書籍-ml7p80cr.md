@@ -1,6 +1,6 @@
 ---
 title: "5個關鍵技巧，幫你挑選適合孩子的靈修書籍"
-description: "5個關鍵技巧，幫你挑選適合孩子的靈修書籍"
+description: "威廷坐在陽光透過窗戶灑進來的客廳裡，手中拿著一本閃亮的靈修書籍，心中卻充滿了疑惑。⋯⋯"
 publishDate: 2026-02-05
 category: "daily-devotion"
 tags: []
@@ -30,13 +30,11 @@ author: "作者"
 
 
 
-![Detailed close-up of vintage book pages showcasing their texture and color.](https://images.pexels.com/photos/29234185/pexels-photo-29234185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 ## 二、選擇具有教育意義的內容
 
 ### 1. 聖經故事與教訓
 靈修書籍中應該包含適合孩子的聖經故事，
 
-![Detailed close-up of a Bible passage focusing on unlawful sexual relations, highlighting scripture text.](https://images.pexels.com/photos/5247737/pexels-photo-5247737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
 以及從中可以學到的道德教訓。這不僅能幫助孩子了解信仰的根基，還能讓他們學會如何將這些教訓應用在日常生活中。威廷可以選擇那些將聖經故事以淺顯易懂的語言呈現的書籍。
 
 ### 2. 啟發思考的問題
@@ -58,4 +56,3 @@ author: "作者"
 ## 實際應用
 挑選靈修書籍時，威廷可以先了解小雅的年齡與興趣，然後選擇那些具教育意義、設計吸引且具互動性的書籍。定期與小雅一起閱讀，並討論書中的內容，讓靈修成為親子互動的美好時光。
 
-![Two children enjoying educational storybooks outdoors on a sunny day.](https://images.pexels.com/photos/4966473/pexels-photo-4966473.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
