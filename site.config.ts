@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "聖經靈修網",
   description: "每日靈修、聖經導讀、信仰問答",
   url: "https://bible.freshblogs.cc",
-  author: "Bible Blog",
+  author: "恩典小編",
   language: "zh-TW",
 
   // SEO 設定
