@@ -3,27 +3,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../../site.config';
 ---
 
-<BaseLayout title="關於我們">
+<BaseLayout title="關於我們" description="我們是恩典小編團隊，用簡單溫暖的文字，陪你每天親近神的話語。">
   <div class="max-w-3xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-bold text-gray-800 mb-8">關於本站</h1>
-    
-    <div class="prose prose-lg">
-      <p class="text-xl text-gray-600 mb-8">
-        {siteConfig.name} 是一個聖經資源網站，提供經文導讀、靈修短文及信仰相關內容。
-      </p>
-      
-      <h2>網站內容</h2>
-      <ul>
-        <li><strong>每日靈修</strong> - 每日靈修短文</li>
-        <li><strong>聖經導讀</strong> - 經文解釋與應用</li>
-        <li><strong>信仰問答</strong> - 常見問題解答</li>
-        <li><strong>今日經文</strong> - 隨機經文產生器</li>
-      </ul>
-      
-      <h2>免責聲明</h2>
+    <div class="text-center mb-10">
+      <span class="text-6xl block mb-4">✝️</span>
+      <h1 class="text-3xl font-bold text-gray-800 mb-3">關於恩典小編</h1>
+      <p class="text-gray-500">用簡單溫暖的文字，陪你每天親近神的話語</p>
+    </div>
+
+    <div class="prose prose-lg max-w-none text-gray-700">
+      <h2>我們是誰？</h2>
       <p>
-        本站內容僅供參考，不代表任何教派立場。經文引用自公開版本。
+        嗨，我們是「恩典小編」——一群熱愛聖經、渴望將神的話語帶進日常生活的基督徒。我們來自不同的教會背景，但有著共同的信念：聖經不只是一本古老的書，而是活的、與我們每一天的生活息息相關。
       </p>
+
+      <h2>為什麼做這個網站？</h2>
+      <p>
+        我們發現，很多弟兄姊妹想要養成每日靈修的習慣，卻不知道從哪裡開始；有些人對經文有疑問，卻不好意思在教會裡問。這個網站就是為了這些需要而存在的——一個安靜的角落，讓你隨時都能親近神的話語。
+      </p>
+      <p>
+        不管你是剛信主的新朋友，還是走在信仰路上多年的弟兄姊妹，我們都希望這裡的內容能成為你的幫助和祝福。
+      </p>
+
+      <h2>這裡有什麼？</h2>
+      <p>
+        <strong>📖 每日靈修：</strong>每天一篇靈修短文，帶你從經文中領受亮光，用神的話語開始新的一天。
+      </p>
+      <p>
+        <strong>📚 經文解釋：</strong>深入淺出地解讀聖經章節，幫助你理解經文的歷史背景、原文含義和生活應用。
+      </p>
+      <p>
+        <strong>❓ 信仰問答：</strong>回答信仰生活中常見的問題，從「基督徒可以做什麼」到「這段經文是什麼意思」，我們盡力提供合乎聖經的解答。
+      </p>
+      <p>
+        <strong>🙏 今日經文：</strong>隨機經文產生器，讓神的話語在你需要的時刻觸動你的心。
+      </p>
+
+      <h2>我們的原則</h2>
+      <p>
+        我們的內容以聖經為根基，盡量呈現平衡的觀點，不偏向特定教派。所有經文引用都來自公開的中文聖經譯本。我們相信，神的話語本身就有能力，我們只是忠實地將它呈現出來。
+      </p>
+
+      <blockquote>
+        「你的話是我腳前的燈，是我路上的光。」——詩篇 119:105
+      </blockquote>
     </div>
   </div>
 </BaseLayout>
